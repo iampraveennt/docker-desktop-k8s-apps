@@ -1,0 +1,16 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  namespace: argocd
+  name: app-of-app
+spec:
+  destination:
+    name: in-cluster
+    namespace: guestbook
+  project: application-set-project
+  source:
+    repoURL: https://github.com/argoproj/argocd-example-apps.git
+    targetRevision: HEAD
+    path: apps
+    helm:
+      releaseName: app-of-apps

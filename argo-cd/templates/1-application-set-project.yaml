@@ -1,0 +1,15 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: application-set-project
+  namespace: argocd
+spec:
+  description: "Test Application Set Project"
+  sourceRepos:
+    - "*"
+  destinations:
+    - namespace: guestbook
+      name: in-cluster
+  clusterResourceWhitelist:
+    - group: ''
+      kind: Namespace

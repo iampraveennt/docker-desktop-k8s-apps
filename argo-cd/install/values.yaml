@@ -1,0 +1,27 @@
+server:
+  ingress:
+    enabled: true
+    annotations:
+      nginx.ingress.kubernetes.io/ssl-redirect: false
+    ingressClassName: nginx
+    hostname: localhost
+configs:
+  params:
+    server.insecure: true
+  cm:
+    url: http://localhost
+    admin.enabled: false
+    dex.config: |
+      connectors:
+        - type: github
+          id: github
+          name: GitHub
+          config: 
+            clientID: Ov23li5Pblznfdouru1h
+            clientSecret: 77893b0dc3bcd7275849e35ec35531774ce66a47
+            requestedScopes: ["openid", "profile", "email", "groups"]
+            requestedIDTokenClaims: {"groups": {"essential": true}}
+  rbac:
+    policy.csv: |
+      g, ntpraveen1991@gmail.com, role:admin
+    scopes: '[groups, email]'
