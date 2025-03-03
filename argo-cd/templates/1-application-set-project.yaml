@@ -12,6 +12,8 @@ spec:
       name: in-cluster
     - namespace: argocd
       name: in-cluster
+    - namespace: helm-guestbook
+      name: in-cluster
   clusterResourceWhitelist:
     - group: ''
       kind: Namespace
