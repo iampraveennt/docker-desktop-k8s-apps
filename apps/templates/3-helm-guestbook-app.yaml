@@ -6,7 +6,7 @@ metadata:
 spec:
   destination:
     namespace: helm-guestbook
-    server: {{ .Values.spec.destination.server }}
+    name: {{ .Values.spec.destination.name }}
   project: application-set-project
   source:
     repoURL: https://github.com/argoproj/argocd-example-apps.git
