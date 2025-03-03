@@ -9,7 +9,7 @@ spec:
     namespace: guestbook
   project: application-set-project
   source:
-    repoURL: https://github.com/argoproj/argocd-example-apps.git
+    repoURL: https://github.com/iampraveennt/docker-desktop-k8s-apps.git
     targetRevision: HEAD
     path: apps
     helm:
