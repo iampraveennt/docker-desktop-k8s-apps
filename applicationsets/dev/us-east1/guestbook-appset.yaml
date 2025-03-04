@@ -12,7 +12,7 @@ spec:
         repoURL: https://github.com/iampraveennt/docker-desktop-k8s-apps.git
         revision: main
         files:
-          - path: deployments/dev/us-east1/*/app.yaml
+          - path: deployments/dev/us-east-1/*/app.yaml
         values:
           rootdir: "{{index .path.segments 0}}"
           env: "{{index .path.segments 1}}"
