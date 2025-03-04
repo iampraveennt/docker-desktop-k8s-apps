@@ -28,6 +28,7 @@ spec:
         path: "{{ .default.spec.source.path }}"
       destination:
         name: "{{ .default.spec.destination.name }}"
+        namespace:  "{{ .default.spec.destination.namespace }}"
       project: guestbook-project
       syncPolicy:
         automated:
