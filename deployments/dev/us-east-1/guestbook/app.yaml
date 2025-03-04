@@ -2,7 +2,7 @@ default:
   spec:
     source:
       repoURL: https://github.com/argoproj/argocd-example-apps.git
-      targetRevision: master
+      targetRevision: HEAD
       path: guestbook
     destination:
       name: in-cluster
