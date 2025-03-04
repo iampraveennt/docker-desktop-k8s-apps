@@ -28,6 +28,7 @@ spec:
         path: "{{ .default.spec.source.path }}"
       destination:
         name: in-cluster
+        namespace: guestbook
       project: guestbook-project
       syncPolicy:
         automated:
