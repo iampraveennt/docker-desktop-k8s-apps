@@ -1,0 +1,16 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: guestbook-project
+  namespace: argocd
+spec:
+  description: Guestbook Project
+  sourceRepos:
+    - https://github.com/argoproj/argocd-example-apps.git
+    - https://github.com/iampraveennt/docker-desktop-k8s-apps.git
+  destinations:
+    - name: in-cluster
+      namespace: guestbook
+  clusterResourceWhitelist:
+    - group: ''
+      kind: Namespace

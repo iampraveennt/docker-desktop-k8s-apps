@@ -1,0 +1,31 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: guestbook-applicationset
+spec:
+  generators:
+    - git:
+        repoURL: https://github.com/iampraveennt/docker-desktop-k8s-apps.git
+        revision: main
+        files:
+          - path: deployments/dev/us-east1/*/app.yaml
+        values:
+          rootdir: "{{ index .path.segment 0 }}"
+          env: "{{ index .path.segment 1 }}"
+          region: "{{ index .path.segment 2 }}"
+          appname: "{{ index .path.segment 3}}"
+  goTemplate: true
+  goTemplateOptions:
+    - "missingkey=error"
+  template:
+    metadata:
+      name: "{{ .values.env }}-{{ .values.appname }}"
+    spec:
+      source:
+        repoURL: "{{ .path.default.spec.source.repoURL }}"
+        targetRevision: "{{ .path.default.spec.source.targetRevision }}"
+        path: "{{ .path.default.spec.source.path }}"
+      destination:
+        name: in-cluster
+      project: guestbook-project
+

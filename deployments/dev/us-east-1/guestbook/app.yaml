@@ -1,0 +1,9 @@
+default:
+  spec:
+    source:
+      repoURL: https://github.com/argoproj/argocd-example-apps.git
+      targetRevision: master
+      path: guestbook
+    destination:
+      name: in-cluster
+      namespace: guestbook

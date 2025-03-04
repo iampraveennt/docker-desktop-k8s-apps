@@ -12,7 +12,7 @@ spec:
     listKind: ApplicationList
     plural: applications
     shortNames:
-    - app
+    - guestbook
     - apps
     singular: application
   scope: Namespaced
@@ -273,7 +273,7 @@ spec:
                             type: string
                           namespace:
                             description: Namespace is an optional namespace to template
-                              with. If left empty, defaults to the app's destination
+                              with. If left empty, defaults to the guestbook's destination
                               namespace.
                             type: string
                           parameters:
@@ -659,7 +659,7 @@ spec:
                               type: string
                             namespace:
                               description: Namespace is an optional namespace to template
-                                with. If left empty, defaults to the app's destination
+                                with. If left empty, defaults to the guestbook's destination
                                 namespace.
                               type: string
                             parameters:
@@ -1164,7 +1164,7 @@ spec:
                         type: string
                       namespace:
                         description: Namespace is an optional namespace to template
-                          with. If left empty, defaults to the app's destination namespace.
+                          with. If left empty, defaults to the guestbook's destination namespace.
                         type: string
                       parameters:
                         description: Parameters is a list of Helm parameters which
@@ -1598,7 +1598,7 @@ spec:
                           type: string
                         namespace:
                           description: Namespace is an optional namespace to template
-                            with. If left empty, defaults to the app's destination
+                            with. If left empty, defaults to the guestbook's destination
                             namespace.
                           type: string
                         parameters:
@@ -1935,7 +1935,7 @@ spec:
                         type: integer
                     type: object
                   syncOptions:
-                    description: Options allow you to specify whole app sync-options
+                    description: Options allow you to specify whole guestbook sync-options
                     items:
                       type: string
                     type: array
@@ -2145,7 +2145,7 @@ spec:
                               type: string
                             namespace:
                               description: Namespace is an optional namespace to template
-                                with. If left empty, defaults to the app's destination
+                                with. If left empty, defaults to the guestbook's destination
                                 namespace.
                               type: string
                             parameters:
@@ -2534,7 +2534,7 @@ spec:
                                 type: string
                               namespace:
                                 description: Namespace is an optional namespace to
-                                  template with. If left empty, defaults to the app's
+                                  template with. If left empty, defaults to the guestbook's
                                   destination namespace.
                                 type: string
                               parameters:
@@ -3074,7 +3074,7 @@ spec:
                                   namespace:
                                     description: Namespace is an optional namespace
                                       to template with. If left empty, defaults to
-                                      the app's destination namespace.
+                                      the guestbook's destination namespace.
                                     type: string
                                   parameters:
                                     description: Parameters is a list of Helm parameters
@@ -3484,7 +3484,7 @@ spec:
                                     namespace:
                                       description: Namespace is an optional namespace
                                         to template with. If left empty, defaults
-                                        to the app's destination namespace.
+                                        to the guestbook's destination namespace.
                                       type: string
                                     parameters:
                                       description: Parameters is a list of Helm parameters
@@ -4014,7 +4014,7 @@ spec:
                                 type: string
                               namespace:
                                 description: Namespace is an optional namespace to
-                                  template with. If left empty, defaults to the app's
+                                  template with. If left empty, defaults to the guestbook's
                                   destination namespace.
                                 type: string
                               parameters:
@@ -4416,7 +4416,7 @@ spec:
                                 namespace:
                                   description: Namespace is an optional namespace
                                     to template with. If left empty, defaults to the
-                                    app's destination namespace.
+                                    guestbook's destination namespace.
                                   type: string
                                 parameters:
                                   description: Parameters is a list of Helm parameters
@@ -5160,7 +5160,7 @@ spec:
                                 type: string
                               namespace:
                                 description: Namespace is an optional namespace to
-                                  template with. If left empty, defaults to the app's
+                                  template with. If left empty, defaults to the guestbook's
                                   destination namespace.
                                 type: string
                               parameters:
@@ -5562,7 +5562,7 @@ spec:
                                 namespace:
                                   description: Namespace is an optional namespace
                                     to template with. If left empty, defaults to the
-                                    app's destination namespace.
+                                    guestbook's destination namespace.
                                   type: string
                                 parameters:
                                   description: Parameters is a list of Helm parameters

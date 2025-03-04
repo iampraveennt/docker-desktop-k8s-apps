@@ -8,11 +8,7 @@ spec:
   sourceRepos:
     - "*"
   destinations:
-    - namespace: guestbook
-      name: in-cluster
-    - namespace: argocd
-      name: in-cluster
-    - namespace: helm-guestbook
+    - namespace: "*"
       name: in-cluster
   clusterResourceWhitelist:
     - group: ''
