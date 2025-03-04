@@ -10,7 +10,7 @@ spec:
     - https://github.com/iampraveennt/docker-desktop-k8s-apps.git
   destinations:
     - name: in-cluster
-      namespace: guestbook
+      namespace: '*'
     - name: in-cluster
       namespace: argocd
   clusterResourceWhitelist:
