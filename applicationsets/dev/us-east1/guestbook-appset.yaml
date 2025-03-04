@@ -29,4 +29,10 @@ spec:
       destination:
         name: in-cluster
       project: guestbook-project
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=true
 

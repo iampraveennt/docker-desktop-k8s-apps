@@ -11,6 +11,8 @@ spec:
   destinations:
     - name: in-cluster
       namespace: guestbook
+    - name: in-cluster
+      namespace: argocd
   clusterResourceWhitelist:
     - group: ''
       kind: Namespace
