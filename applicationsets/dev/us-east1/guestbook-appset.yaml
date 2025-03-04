@@ -1,38 +1,68 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: guestbook-applicationset
+  name: cluster-addons
   namespace: argocd
 spec:
   goTemplate: true
-  goTemplateOptions:
-    - "missingkey=error"
+  goTemplateOptions: ["missingkey=error"]
   generators:
-    - git:
-        repoURL: https://github.com/iampraveennt/docker-desktop-k8s-apps.git
-        revision: main
-        files:
-          - path: deployments/dev/us-east1/*/app.yaml
-        values:
-          rootdir: "{{ index .path.segment 0 }}"
-          env: "{{ index .path.segment 1 }}"
-          region: "{{ index .path.segment 2 }}"
-          appname: "{{ index .path.segment 3}}"
+  - git:
+      repoURL: https://github.com/argoproj/argo-cd.git
+      revision: HEAD
+      directories:
+      - path: applicationset/examples/git-generator-directory/cluster-addons/*
   template:
     metadata:
-      name: "{{ .values.env }}-{{ .values.appname }}"
+      name: '{{.path.basename}}'
     spec:
-      source:
-        repoURL: "{{ .default.spec.source.repoURL }}"
-        targetRevision: "{{ .default.spec.source.targetRevision }}"
-        path: "{{ .default.spec.source.path }}"
-      destination:
-        name: in-cluster
       project: guestbook-project
+      source:
+        repoURL: https://github.com/argoproj/argo-cd.git
+        targetRevision: HEAD
+        path: '{{.path.path}}'
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: '{{.path.basename}}'
       syncPolicy:
-        automated:
-          prune: true
-          selfHeal: true
         syncOptions:
-          - CreateNamespace=true
+        - CreateNamespace=true
 
+#apiVersion: argoproj.io/v1alpha1
+#kind: ApplicationSet
+#metadata:
+#  name: guestbook-applicationset
+#  namespace: argocd
+#spec:
+#  goTemplate: true
+#  goTemplateOptions:
+#    - "missingkey=error"
+#  generators:
+#    - git:
+#        repoURL: https://github.com/iampraveennt/docker-desktop-k8s-apps.git
+#        revision: main
+#        files:
+#          - path: deployments/dev/us-east1/*/app.yaml
+#        values:
+#          rootdir: "{{ index .path.segment 0 }}"
+#          env: "{{ index .path.segment 1 }}"
+#          region: "{{ index .path.segment 2 }}"
+#          appname: "{{ index .path.segment 3}}"
+#  template:
+#    metadata:
+#      name: "{{ .values.env }}-{{ .values.appname }}"
+#    spec:
+#      source:
+#        repoURL: "{{ .default.spec.source.repoURL }}"
+#        targetRevision: "{{ .default.spec.source.targetRevision }}"
+#        path: "{{ .default.spec.source.path }}"
+#      destination:
+#        name: in-cluster
+#      project: guestbook-project
+#      syncPolicy:
+#        automated:
+#          prune: true
+#          selfHeal: true
+#        syncOptions:
+#          - CreateNamespace=true
+#
