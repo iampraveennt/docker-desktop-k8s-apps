@@ -6,4 +6,4 @@ default:
       path: guestbook
     destination:
       name: in-cluster
-      namespace: guestbook3
+      namespace: guestbook4
