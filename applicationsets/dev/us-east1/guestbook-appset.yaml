@@ -27,8 +27,8 @@ spec:
         targetRevision: "{{ .default.spec.source.targetRevision }}"
         path: "{{ .default.spec.source.path }}"
       destination:
-        name: in-cluster
-        namespace: guestbook
+        name: "{{ .default.spec.destination.name }}"
+        namespace:  "{{ .default.spec.destination.namespace }}"
       project: guestbook-project
       syncPolicy:
         automated:
