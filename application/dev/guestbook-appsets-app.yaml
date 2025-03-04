@@ -1,0 +1,13 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: guestbook-appsets-app
+spec:
+  source:
+    repoURL: https://github.com/iampraveennt/docker-desktop-k8s-apps.git
+    path: applicationsets/dev/us-east1
+    targetRevision: main
+  destination:
+    namespace: guestbook
+    name: in-cluster
+  project: guestbook-project

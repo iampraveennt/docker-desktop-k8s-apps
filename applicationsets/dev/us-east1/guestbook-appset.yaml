@@ -2,7 +2,11 @@ apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
   name: guestbook-applicationset
+  namespace: argocd
 spec:
+  goTemplate: true
+  goTemplateOptions:
+    - "missingkey=error"
   generators:
     - git:
         repoURL: https://github.com/iampraveennt/docker-desktop-k8s-apps.git
@@ -14,17 +18,14 @@ spec:
           env: "{{ index .path.segment 1 }}"
           region: "{{ index .path.segment 2 }}"
           appname: "{{ index .path.segment 3}}"
-  goTemplate: true
-  goTemplateOptions:
-    - "missingkey=error"
   template:
     metadata:
       name: "{{ .values.env }}-{{ .values.appname }}"
     spec:
       source:
-        repoURL: "{{ .path.default.spec.source.repoURL }}"
-        targetRevision: "{{ .path.default.spec.source.targetRevision }}"
-        path: "{{ .path.default.spec.source.path }}"
+        repoURL: "{{ .default.spec.source.repoURL }}"
+        targetRevision: "{{ .default.spec.source.targetRevision }}"
+        path: "{{ .default.spec.source.path }}"
       destination:
         name: in-cluster
       project: guestbook-project
