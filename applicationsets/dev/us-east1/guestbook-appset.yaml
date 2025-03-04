@@ -14,10 +14,10 @@ spec:
         files:
           - path: deployments/dev/us-east1/*/app.yaml
         values:
-          rootdir: "{{index .path.segment 0}}"
-          env: "{{index .path.segment 1}}"
-          region: "{{index .path.segment 2}}"
-          appname: "{{index .path.segment 3}}"
+          rootdir: "{{ index .path.segments 0}}"
+          env: "{{ index .path.segments 1}}"
+          region: "{{ index .path.segments 2}}"
+          appname: "{{ index .path.segments 3}}"
   template:
     metadata:
       name: "{{ .values.env }}-{{ .values.appname }}"
