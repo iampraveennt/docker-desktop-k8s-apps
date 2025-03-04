@@ -11,3 +11,7 @@ spec:
     namespace: guestbook
     name: in-cluster
   project: guestbook-project
+  syncPolicy:
+    automated:
+      selfHeal: true
+      allowEmpty: true
